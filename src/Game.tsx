@@ -11,15 +11,14 @@ import { Footer } from "./Footer"
 const getBackgroundColor = (info : QuestionType, index: number) => {
   const { userSelectedAnswer, correctAnswer } = info
 
-  // El usuario aun no selecciona la respuesta
   if (userSelectedAnswer == null) return 'transparent'
-  // Las respuestas incorrectas que no han sido seleccionadas
+
   if (index !== userSelectedAnswer && index !== correctAnswer ) return 'transparent'
-  // Solucion correcta
+
   if (index === correctAnswer) return 'green'
-  // Respuesta incorrecta 
+
   if (index === userSelectedAnswer) return 'red'
-  // 
+  
   return 'transparent'
 }
 

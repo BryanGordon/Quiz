@@ -25,20 +25,14 @@ export const useQuestionState = create<State>()(persist((set, get) => {
       set({ questions })
 
     },
-    // Se realiza para volver a la colocar la informacion correcta, ya
-   //  que se randomizo anteriormente. 
-   //           (NO ES PARA OBTENER LA RESPUESTA CORRECTA) 
+     
     selectAnswer: (questionId: number, answerIndex: number) => {
-      // Se usa structure clone
       const { questions } = get()
       const newQuestions = structuredClone(questions)
-      // Encontramos el indice de la pregunta
       const questionIndex = newQuestions.findIndex(q => q.id === questionId)
-      // Obtener la informacion de la pregunta
       const questionInfo = newQuestions[questionIndex]
       const isCorrectUserAnswer = questionInfo.correctAnswer === answerIndex
 
-      // Se cambia la informacion en la pregunta copiada
       newQuestions[questionIndex] = {
         ... questionInfo,
         isCorrectUserAnswer,
